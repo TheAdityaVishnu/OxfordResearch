@@ -1,0 +1,32 @@
+//For Saving MFCC coefficients of all TUM files
+
+for m = 1:305
+
+mkdir (Names{m});
+folder = Names{m};
+k = 1;
+Limit = size(samples{m},2)
+
+for i = 1:Limit
+
+[coeffs,delta] = mfcc(samples{m}(:,i),fs);
+f = figure('visible', 'off');
+
+baseFileName = strcat(Names{m},'_coeffs_', num2str(i,'%02d'),'.png'); 
+fullFileName = fullfile(folder, baseFileName);
+imagesc(coeffs);
+saveas(f,  fullFileName, 'png');
+
+baseFileName2 = strcat(Names{m},'_delta_', num2str(i,'%02d'),'.png'); 
+fullFileName2 = fullfile(folder, baseFileName2);
+imagesc(delta);
+saveas(f,  fullFileName2, 'png');
+k = k+1;
+clear coeffs;
+clear delta;
+i
+end
+clear k;
+end
+
+
