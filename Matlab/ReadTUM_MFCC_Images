@@ -1,5 +1,11 @@
 //For Saving MFCC coefficients of all TUM files
 
+for i =1:305
+trailing{i} = mod(length(FileNo_R{i}),44100);
+samples{i}  = reshape(FileNo_R{i}(1:end-trailing{i}), 44100, []);
+i
+end
+
 for m = 1:305
 
 mkdir (Names{m});
