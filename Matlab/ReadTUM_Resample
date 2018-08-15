@@ -1,0 +1,25 @@
+PIDs = 'audio\p';
+
+for i=1:305
+folder = strcat(PIDs,num2str(i,'%02d'),'\')
+audio_files = dir(fullfile(folder));
+audio_files(1,:) =[];
+audio_files(1,:) =[];
+
+for k = 1 : length(audio_files)
+thisdir = audio_files(k).name;
+tatti4= strcat(folder, thisdir);
+tatti5 = strcat(tatti4,'\audio.wav');
+[tatti6, ff5] = audioread(tatti5);
+TUM{k} = tatti6;
+clear tatti6
+clear tatti4
+clear tatti5
+end
+
+FileNo{i} = vertcat(TUM{:});
+clear TUM;
+FileNo{i} = mean(FileNo{i},2);
+FileNo_R{i} = resample(FileNo{i}, 44100, 16000);
+end
+
