@@ -13,17 +13,23 @@ folder = Names{m};
 k = 1;
 Limit = size(samples{m},2)
 
+if(GenderList(m) == 1)
+Temp = 'male';
+else
+Temp = 'female';
+end
+
 for i = 1:Limit
 
 [coeffs,delta] = mfcc(samples{m}(:,i),fs);
 f = figure('visible', 'off');
 
-baseFileName = strcat(Names{m},'_coeffs_', num2str(i,'%02d'),'.png'); 
+baseFileName = strcat(Names{m},'_',Temp,'_coeffs_', num2str(i,'%02d'),'.png'); 
 fullFileName = fullfile(folder, baseFileName);
 imagesc(coeffs);
 saveas(f,  fullFileName, 'png');
 
-baseFileName2 = strcat(Names{m},'_delta_', num2str(i,'%02d'),'.png'); 
+baseFileName2 = strcat(Names{m},'_',Temp,'_delta_', num2str(i,'%02d'),'.png'); 
 fullFileName2 = fullfile(folder, baseFileName2);
 imagesc(delta);
 saveas(f,  fullFileName2, 'png');
