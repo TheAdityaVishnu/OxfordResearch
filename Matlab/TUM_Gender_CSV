@@ -1,6 +1,6 @@
 k=1;
 
-for m = 1:305
+for m = 1:230
 
 folder = Names{m};
 audio_files = dir(fullfile(folder));
@@ -13,7 +13,7 @@ for i = 1:no_of_sub_files
 
 List{k,1} = audio_files(i).name;
 
-if(A(m) == 1)
+if(GenderList(m) == 1)
 List{k,2} = 'male';
 else
 List{k,2} = 'female';
