@@ -28,30 +28,18 @@ for i in range(1, 306):                     ##306 first sample is temp
     Matrix_C.append(Coeffs)
 
 
-sum=0
 Mean_C = []
-
+#find mean of every individual list in the parent list
 for i in range(0, 305):
-    #print('value of i is ', i)
     Temp2 = Shape_of_Sample[i]
-    #sum = sum +Temp2
     for j in range(0, Temp2):
-        #print('value of j is ',j)
         Temp3 = np.mean(Matrix_C[i], axis = 0)
         Mean_C.append(Temp3)
 
 Mean_C_2 = np.mean(Mean_C,axis=0)
-
-
-#print('before is ',Matrix_C[:])
 
 for i in range(0, 305):
     Matrix_C[i] = Matrix_C[i] - Mean_C_2
 
 
 Training = np.concatenate(Matrix_C[:], 0)
-#print(Labels.shape)
-# print('mean is ',Mean_C_2[0][0])
-#print('after is ', Matrix_C[0][0][0])
-
-#print(Shape_of_Sample)
